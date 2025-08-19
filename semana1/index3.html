@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num1" >
+    <input type="number" id="num2" >
+    <button id="boton" on>sumar</button>
+    <input type="text" id = "respuesta">
+    <script>
+
+    const miboton = document.getElementById("boton");
+    miboton.addEventListener("click", ()=>
+    {
+    let numero1 = parseInt(document.getElementById("num1").value);
+    let numero2 = parseInt(document.getElementById("num2").value);
+    let suma = numero1 + numero2;    
+    document.getElementById("respuesta").value = suma;
+    });     
+
+    </script>
+</body>
+</html>
