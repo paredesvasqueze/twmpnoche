@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="pokemonelegido" onclick="cambiarvalores()">
+        <option value="">Seleccionar Pokemon</option>
+        <option value="pikachu">pikachu</option>
+        <option value="charmander">charmander</option>
+        <option value="charizard">charizard</option>
+        <option value="bulbasaur">bulbasaur</option>
+        <option value="ivysaur">ivysaur</option>
+        <option value="venusaur">venusaur</option>
+        <option value="squirtle">squirtle</option>
+        <option value="wartortle">wartortle</option>
+        <option value="blastoise">blastoise</option>
+        <option value="caterpie">caterpie</option>
+        <option value="metapod">metapod</option>
+        <option value="butterfree">butterfree</option>
+        <option value="pidgey">pidgey</option>
+        <option value="pidgeotto">pidgeotto</option>
+        <option value="pidgeot">pidgeot</option>
+        <option value="rattata">rattata</option>
+        <option value="raticate">raticate</option>
+        <option value="ekans">ekans</option>
+        <option value="arbok">arbok</option>
+    </select>
+   <br>
+    <label>Experiencia Base</label>
+    <input id="experiencia" type="text" readonly = "true">
+    <br>
+    <label>Peso</label>
+    <input id="peso" type="text" readonly = "true">
+    <br>
+    <label>Nombre</label>
+    <input id="nombre" type="text" readonly = "true">    
+    <br>
+    <label>imagen</label>
+    <img id = "imagen" alt="imagenpokemon">
+
+    <script>
+function cambiarvalores(){    
+    let url = document.getElementById("pokemonelegido").value;
+    url = "https://pokeapi.co/api/v2/pokemon/"+url;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {            
+            console.log(data);
+            document.getElementById("experiencia").value = data.base_experience;
+            document.getElementById("peso").value = data.weight;
+            document.getElementById("nombre").value = data.name;
+            document.getElementById("imagen").src = data.sprites.front_default;           
+        });
+}
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Experiencia Base</label>
+    <input id="experiencia" type="text" readonly = "true">
+    <br>
+    <label>Peso</label>
+    <input id="peso" type="text" readonly = "true">
+    <br>
+    <label>Nombre</label>
+    <input id="nombre" type="text" readonly = "true">
+    <br>    
+    <img id = "imagen" alt="imagenpokemon" >
+
+    <script>
+        fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+        .then(res => res.json())
+        .then(data => {            
+            console.log(data);
+            document.getElementById("experiencia").value = data.base_experience;
+            document.getElementById("peso").value = data.weight;
+            document.getElementById("nombre").value = data.name;
+            document.getElementById("imagen").src = data.sprites.front_default;
+
+            
+
+        });
+    </script>
+</body>
+</html>
