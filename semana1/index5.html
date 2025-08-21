@@ -38,8 +38,15 @@
     <label>Nombre</label>
     <input id="nombre" type="text" readonly = "true">    
     <br>
+    <label>Primera Habilidad</label>
+    <input id="primerahabilidad" type="text" readonly = "true">    
+    <br>
     <label>imagen</label>
     <img id = "imagen" alt="imagenpokemon">
+    <br>
+    <h1>Lista de Habilidades</h1>
+    <div id ="habilidades">
+    </div>
 
     <script>
 function cambiarvalores(){    
@@ -53,10 +60,59 @@ function cambiarvalores(){
             document.getElementById("peso").value = data.weight;
             document.getElementById("nombre").value = data.name;
             document.getElementById("imagen").src = data.sprites.front_default;           
-        });
-}
+            document.getElementById("primerahabilidad").value = data.abilities[0].ability.name
 
-        
+            const contenedor = document.getElementById("habilidades");
+            const tabla = document.createElement("table");
+            tabla.border =1;
+            const encabezado = document.createElement("thead");
+            const fila = document.createElement("tr");
+            const celda = document.createElement("td");
+            celda.textContent = "Habilidad";
+            fila.appendChild(celda);        
+            encabezado.appendChild(fila);
+             
+            
+            const body = document.createElement("tbody");
+            data.abilities.forEach(element => {
+
+            const filad = document.createElement("tr");
+            const celdad = document.createElement("td");
+            console.log(element.name);
+            celdad.textContent = element.ability.name;
+
+            filad.appendChild(celdad);                      
+            body.appendChild(filad);   
+
+            tabla.appendChild(encabezado);
+            tabla.appendChild(body);
+            contenedor.innerHTML = "";            
+            contenedor.appendChild(tabla); 
+            
+            
+            });
+
+/*
+<table>
+    <thead> 
+        <tr>
+            <td>cabecera</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>valor</td>
+        </tr>
+    </tbody>
+</table>
+            data..forEach(element => {
+                
+            });
+*/
+
+
+        });
+}        
     </script>
 </body>
 </html>
