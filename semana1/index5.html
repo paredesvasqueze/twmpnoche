@@ -46,6 +46,10 @@
     <br>
     <h1>Lista de Habilidades</h1>
     <div id ="habilidades">
+        <br>
+    <label>imagen</label>
+    <img id = "imagenanimada" alt="imagenpokemon">
+    <br>
     </div>
 
     <script>
@@ -59,7 +63,8 @@ function cambiarvalores(){
             document.getElementById("experiencia").value = data.base_experience;
             document.getElementById("peso").value = data.weight;
             document.getElementById("nombre").value = data.name;
-            document.getElementById("imagen").src = data.sprites.front_default;           
+            document.getElementById("imagen").src = data.sprites.front_default;   
+            document.getElementById("imagenanimada").src = data.sprites.other['showdown'].front_default;         
             document.getElementById("primerahabilidad").value = data.abilities[0].ability.name
 
             const contenedor = document.getElementById("habilidades");
